@@ -14,7 +14,7 @@ module.exports = [
 },{
 	img: "Custom Lighter Case + Matching Art LighterIMG_5507.jpg",
 	product: "Custom Lighter Case + Matching Art Lighter",
-	price: 3,
+	price: 35,
 },{
 	img: "EF2A87B4-187F-47C4-9624-ECF9306124AA",
 	product: "Lava Shroom Lighter",
@@ -22,19 +22,19 @@ module.exports = [
 },{
 	img: "Tattoo DesignLayne.png",
 	product: "Tattoo Design",
-	price: 2,
+	price: 25,
 },{
 	img: "Lighter Case + Matching Art LighterIMG_4711 copy.jpg",
 	product: "Lighter Case + Matching Art Lighter",
-	price: 2,
+	price: 25,
 },{
 	img: "Custom Nude LighterIMG_3580.jpg",
 	product: "Custom Nude Lighter",
-	price: 1,
+	price: 15,
 },{
 	img: "F0358AE2-DCB4-47D5-810A-79E12175E5E8",
 	product: "3 Mushroom Lighters + Sticker Set",
-	price: 2,
+	price: 25,
 },{
 	img: "Lighter WrapIMG_2773.jpg",
 	product: "Lighter Wrap",
@@ -46,11 +46,11 @@ module.exports = [
 },{
 	img: "Mushroom Keychain",
 	product: "Mushroom Keychain",
-	price: 1,
+	price: 10,
 },{
 	img: "11x17 Art PrintALL.jpg",
 	product: "11x17 Art Print",
-	price: 2,
+	price: 22,
 },{
 	img: "DC0765F7-873B-4836-A369-18368E3B5C5D",
 	product: "Deadly Flutter Sticker",
@@ -58,23 +58,23 @@ module.exports = [
 },{
 	img: "Custom Pet PortraitUntitled-20-02.jpg",
 	product: "Custom Pet Portrait",
-	price: 3,
+	price: 35,
 },{
 	img: "Custom Nude PortraitHaley K-01.jpg",
 	product: "Custom Nude Portrait",
-	price: 3,
+	price: 35,
 },{
 	img: "4x6 Art PrintALL.jpg",
 	product: "4x6 Art Print",
-	price: 1,
+	price: 12,
 },{
 	img: "8.5x11 Art PrintALL.jpg",
 	product: "8.5x11 Art Print",
-	price: 1,
+	price: 18,
 },{
 	img: "Art CandleCANDLE#.jpg",
 	product: "Art Candle",
-	price: 3,
+	price: 30,
 },{
 	img: "7BDC0EF6-A54A-497A-B8C1-34AC7100C173",
 	product: "2 Mini Holographic Cumfort Me Stickers",
@@ -106,7 +106,7 @@ module.exports = [
 },{
 	img: "Custom Art PortraitCody-01.jpg",
 	product: "Custom Art Portrait",
-	price: 3,
+	price: 35,
 },{
 	img: "Lust Lighter",
 	product: "Lust Lighter",
@@ -118,7 +118,7 @@ module.exports = [
 },{
 	img: "Custom Portrait LighterIMG_3215.jpg",
 	product: "Custom Portrait Lighter",
-	price: 1,
+	price: 15,
 },{
 	img: "IMG_4592.jpgIMG_4608.jpg",
 	product: "Zodiac Lighter",
