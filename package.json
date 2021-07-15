@@ -1,0 +1,14 @@
+{
+  "name": "jegan-shop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:wommy/jegan-shop.git",
+  "author": "wommy <tom@technomad.media>",
+  "license": "MIT",
+  "scripts": {
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1"
+  }
+}
