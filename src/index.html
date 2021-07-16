@@ -1,4 +1,26 @@
 ---
 layout: html5
 ---
+<style>
+main {
+	display: grid;
+	grid-template-columns: repeat( 3, minmax( 0, 1fr ) );
+	max-width: 768px;
+	margin: 0 auto;
+}
+</style>
 <h1>jegan's shop</h1>
+<nav>
+	{%- for ea in shopEDIT | flat | unique %}
+	<button>{{ ea }}</button>
+	{%- endfor %}
+</nav>
+<main>
+	{%- for ea in shopEDIT %}
+	<div>
+		<p>{{ea.product}}</p>
+		<p>{{ea.category}}</p>
+		<p>${{ea.price}}.00</p>
+	</div>
+	{%- endfor %}
+</main>
