@@ -2,49 +2,112 @@
 layout: html5
 ---
 <style>
-main {
-	display: grid;
-	grid-template-columns: repeat( 3, minmax( 0, 1fr ) );
-	max-width: 768px;
-	margin: 0 auto;
+:root {
+	--tw-text-opacity: 1;
+	--tw-border-opacity: 1;
+	--tw-bg-opacity: 1;
 }
-.hide {
-	display: none;
+
+button {
+	cursor: pointer;
+	border-radius: .375rem;
+}
+
+.custom {
+	color: rgba(239, 68, 68, var(--tw-text-opacity));
+	border-color: rgba(248, 113, 113, var(--tw-border-opacity));
+	background-color: rgba(254, 226, 226, var(--tw-bg-opacity));
+}
+
+.print {
+	color: rgba(245, 158, 11, var(--tw-text-opacity));
+	border-color: rgba(251, 191, 36, var(--tw-border-opacity));
+	background-color: rgba(254, 243, 199, var(--tw-bg-opacity));
+}
+
+.green {
+	color: rgba(16,185,129,var(--tw-text-opacity));
+	border-color: rgba(52,211,153,var(--tw-border-opacity));
+}
+
+.lighter {
+	color: rgba(99, 102, 241, var(--tw-text-opacity));
+	border-color: rgba(129, 140, 248, var(--tw-border-opacity));
+	background-color: rgba(224, 231, 255, var(--tw-bg-opacity));
+}
+
+.misc {
+	color: rgba(236, 72, 153, var(--tw-text-opacity));
+	border-color: rgba(244, 114, 182, var(--tw-border-opacity));
+	background-color: rgba(252, 231, 243, var(--tw-bg-opacity));
+}
+
+.disabled {
+	background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }
 </style>
 
-<div class="container" x-data="{ 
-	title: 'jegan\'s shop',
+<div
+	class="container mx-auto"
+	x-data="{ 
+		title: 'jegan\'s shop',
 
-	showLighter: true, 
-	showPrint: true,
-	showCustom: true,
-	showMisc: true,
-}">
-	<h1 x-text="title"></h1>
+		lighter: true, 
+		print: true,
+		custom: true,
+		misc: true,
+	}"
+>
 
-	<nav>
-		<button @click="
-			showLighter = true, 
-			showPrint = true, 
-			showCustom = true, 
-			showMisc = true
-		">all</button>
-		{%- for ea in shopEDIT | flat | unique %}
-		<button @click="show{{ ea | capitalize }} = !show{{ ea | capitalize }}">{{ ea }}</button>
-		{%- endfor %}
-	</nav>
+	<header>
+		<h1 
+			x-text="title"
+		></h1>
+		<nav class="flex gap-4">
+			<button 
+				@reset="
+					lighter = true, 
+					print = true, 
+					custom = true, 
+					misc = true
+				"
+		 		@click="$dispatch('reset')"
+		 		x-effect="!lighter & !print & !custom & !misc && $dispatch('reset')"
 
-	<main>
+		 		class="px-4 bg-gray-50"
+			>all</button>
+
+			{%- for ea in shopEDIT | flat | unique %}
+			<button 
+				@click="{{ ea }} = !{{ ea }}"
+				:class="!{{ea}} && 'disabled'"
+
+		 		class="px-4 {{ea}}"
+			>{{ ea }}</button>
+			{%- endfor %}
+
+		</nav>
+	</header>
+
+	<main class="my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 		{%- for ea in shopEDIT %}
-		<div :hidden="!show{{ ea.category | first | capitalize }} && !show{{ ea.category | last | capitalize }}">
-			<p>{{ea.product}}</p>
-			<p>
-				{%- for cat in ea.category %}
-				<span>{{cat}}</span>
-				{%- endfor %}
-			</p>
-			<p>${{ea.price}}.00</p>
+		<div 
+			x-show="{{ ea.category | first }} || {{ ea.category | last }}" 
+			x-transition
+	 		class="p-4 place-content-between flex flex-col bg-gray-50 rounded-lg shadow-lg"
+		>
+			<div>{{ea.product}}</div>
+			<div class="mt-4 flex justify-between">
+				<div>
+					{%- for cat in ea.category %}
+					<button
+			 			class="{{cat}}"
+						:class="!{{cat}} && 'disabled'"
+					>{{cat}}</button>
+					{%- endfor %}
+				</div>
+				<button class="green font-medium">${{ea.price}}.00</button>
+			</div>
 		</div>
 		{%- endfor %}
 	</main>
