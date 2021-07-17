@@ -8,19 +8,44 @@ main {
 	max-width: 768px;
 	margin: 0 auto;
 }
+.hide {
+	display: none;
+}
 </style>
-<h1>jegan's shop</h1>
-<nav>
-	{%- for ea in shopEDIT | flat | unique %}
-	<button>{{ ea }}</button>
-	{%- endfor %}
-</nav>
-<main>
-	{%- for ea in shopEDIT %}
-	<div>
-		<p>{{ea.product}}</p>
-		<p>{{ea.category}}</p>
-		<p>${{ea.price}}.00</p>
-	</div>
-	{%- endfor %}
-</main>
+
+<div class="container" x-data="{ 
+	title: 'jegan\'s shop',
+
+	showLighter: true, 
+	showPrint: true,
+	showCustom: true,
+	showMisc: true,
+}">
+	<h1 x-text="title"></h1>
+
+	<nav>
+		<button @click="
+			showLighter = true, 
+			showPrint = true, 
+			showCustom = true, 
+			showMisc = true
+		">all</button>
+		{%- for ea in shopEDIT | flat | unique %}
+		<button @click="show{{ ea | capitalize }} = !show{{ ea | capitalize }}">{{ ea }}</button>
+		{%- endfor %}
+	</nav>
+
+	<main>
+		{%- for ea in shopEDIT %}
+		<div :hidden="!show{{ ea.category | first | capitalize }} && !show{{ ea.category | last | capitalize }}">
+			<p>{{ea.product}}</p>
+			<p>
+				{%- for cat in ea.category %}
+				<span>{{cat}}</span>
+				{%- endfor %}
+			</p>
+			<p>${{ea.price}}.00</p>
+		</div>
+		{%- endfor %}
+	</main>
+</div>
