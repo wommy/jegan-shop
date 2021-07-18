@@ -1,0 +1,136 @@
+---
+layout: html5
+title: dashboard
+stocks: [
+{
+	product: 'lighter',
+	materials: [ 'blank','art','laminate','bag']
+}
+]
+quantity: []
+---
+<div 
+	class="container mx-auto"
+	x-data="{
+		stock: [],
+
+		submit(s) {
+			this.stock.push( stockModel(s) )
+			console.log( this.stock )
+		},
+
+		stockModel(x,y1,y2) {
+			product: x,
+			materials: [y1,y2],
+		},
+
+		showModal: false,
+
+		quantity: {
+			lighter: 0,
+			blank: 0,
+			art: 0,
+			laminate: 0,
+			bag: 0,
+		}
+	}"
+
+	@keydown.escape="showModal = false"
+>
+
+	<header>
+		<h1>{{title}}</h1>
+
+		<form 
+	 		method="GET" action="/" 
+			class="flex bg-gray-100"
+		>
+			<input type="text" name="name" placeholder="name" class="w-1/2">
+			<input type="text" name="other" placeholder="other" class="w-1/2">
+			<input type="submit" @click.prevent="submit()">
+		</form>
+
+		<div class="my-4">
+			<button @click="showModal = !showModal">modal</button>
+		</div>
+
+		<!-- modal bg -->
+		<div 
+			x-show="showModal" x-transition
+			class="inset-0 fixed grid z-10 bg-black bg-opacity-75"
+		>
+
+			<!-- modal -->
+			<div
+		 		class="place-self-center w-3/4 h-3/4 flex flex-col bg-gray-100 rounded"
+				@click.away="showModal = false"
+			>
+				<button class="w-1/12 self-end py-2 px-4 rounded bg-white"
+					@click="showModal = false"
+				>✖</button>
+
+				<div class="grid place-content-center">
+					<form 
+						method="GET" action="/" 
+						class="grid bg-gray-50"
+					>
+						<input type="text" name="product" placeholder="product">
+						<input type="text" name="material1" placeholder="material1">
+						<input type="text" name="material2" placeholder="material2">
+						<input type="submit" @click.prevent="submit()">
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+	<main class="my-4 grid">
+		<h3>please add some stock</h3>
+
+		<table class="grid gap-4">
+			<thead>
+				<tr>
+					<th>stock</th>
+					<th>quantity</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{%- for stock in stocks %}
+				<tr>
+					<td>{{ stock.product }}</td>
+					<td x-text="quantity.{{stock.product}}"></td>
+					<td><button>addQuantity</button></td>
+				</tr>
+				{%- for material in stock.materials %}
+				<tr>
+					<td>{{ material }}</td>
+					<td x-text="quantity.{{material}}"></td>
+					<td><button @click=""
+					>addQuantity</button></td>
+				</tr>
+				{% endfor %}
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</main>
+
+	<style>
+	button {
+		background-color: rgba(243, 244, 246, 1);
+	}
+	tr {
+		display: grid;
+		grid-template-columns: 3fr 1fr 1fr;
+		place-items: center;
+		gap: 1rem;
+	}
+	tr:nth-child(even) {
+		background-color: silver;
+	}
+	</style>
+
+</div>
+
