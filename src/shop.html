@@ -61,9 +61,7 @@ button {
 >
 
 	<header>
-		<h1 
-			x-text="title"
-		></h1>
+		<h1 x-text="title"></h1>
 		<nav class="flex gap-4">
 			<button 
 				@reset="
@@ -73,7 +71,7 @@ button {
 					misc = true
 				"
 		 		@click="$dispatch('reset')"
-		 		x-effect="!lighter & !print & !custom & !misc && $dispatch('reset')"
+				x-effect="!lighter & !print & !custom & !misc && console.log('TODO: $dispatch(`reset`)')"
 
 		 		class="px-4 bg-gray-50"
 			>all</button>
