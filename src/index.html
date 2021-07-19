@@ -19,7 +19,8 @@ quantity: []
 		data: [ 'thank you', 'card', 'envelope' ],
 		Model: {
 			product: '',
-			materials: []
+			materials: [],
+			addMaterial: (x)=>this.Model.materials.push(x)
 		},
 
 		submit() {
