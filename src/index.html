@@ -60,9 +60,9 @@ button {
 	}"
 >
 
-	<header>
-		<h1 x-text="title"></h1>
-		<nav class="flex gap-4">
+	<header class="grid place-content-center">
+		<h1 x-text="title" class="mx-auto"></h1>
+		<nav class="flex gap-2 sm:gap-4 text-sm md:text-base">
 			<button 
 				@reset="
 					lighter = true, 
@@ -81,7 +81,7 @@ button {
 				@click="{{ ea }} = !{{ ea }}"
 				:class="!{{ea}} && 'disabled'"
 
-		 		class="px-4 {{ea}}"
+		 		class="px-2 sm:px-4 {{ea}}"
 			>{{ ea }}</button>
 			{%- endfor %}
 
