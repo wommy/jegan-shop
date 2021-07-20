@@ -47,7 +47,7 @@ module.exports = [
 },{
 	img: "Lighter WrapIMG_2773.jpg",
 	product: "Lighter Wrap",
-	category: ['lighter'],
+	category: ['misc'],
 	price: 3,
 },{
 	img: "My Plants Wear Leather LighterIMG_4420.jpg",
